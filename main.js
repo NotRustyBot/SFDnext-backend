@@ -1,7 +1,14 @@
-const http = require('http');
+const https = require('https');
 const fs = require('fs');
 
-http.createServer(function (request, response) {
+let certLocation = JSON.parse(fs.readFileSync("certLocation.json"));
+
+const options = {
+    key: fs.readFileSync(certLocation.key),
+    cert: fs.readFileSync(certLocation.cert)
+};
+
+https.createServer(options, function (request, response) {
     response.setHeader("Access-Control-Allow-Origin", "*");
     response.writeHead(200);
     let questlets = request.url.split('/');
