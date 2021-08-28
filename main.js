@@ -15,7 +15,7 @@ http.createServer(function (request, response) {
     response.end();
 }).listen(5000);
 
-const dataFile = './sfdn.txt';
+const dataFile = fs.readFileSync('dataPath.txt', 'utf8');
 
 let fsWait = false;
 fs.watch(dataFile, (event, filename) => {
