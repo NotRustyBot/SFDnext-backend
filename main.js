@@ -46,6 +46,7 @@ let names = [];
 function loadData(string) {
     let data = string.split('\n');
     for (let i = 1; i < data.length; i++) {
+        data[i] = data[i].replaceAll('\|', l);
         const line = data[i].split('|');
         let name = line[1];
         if (name == "users") {
